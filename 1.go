@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"log"
 	"sort"
 	"strconv"
 	"strings"
@@ -41,12 +39,7 @@ func part2(text string) []int {
 }
 
 func main() {
-	data, err := ioutil.ReadFile("1.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	text := string(data)
+	text := ReadInput(1)
 
 	part1Result := part1(text)
 	fmt.Println("Part 1, ", part1Result)
