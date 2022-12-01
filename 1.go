@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"sort"
 	"strconv"
 	"strings"
 )
 
-func part1(text string) int {
+func caloriesList(text string) []int {
 	elvesCalories := strings.Split(text, "\n\n")
-	mostCalories := 0
+	elvesCaloriesNums := make([]int, len(elvesCalories))
 	for _, elfCalories := range elvesCalories {
 		calories := strings.Split(elfCalories, "\n")
 		calorieTotal := 0
@@ -21,11 +22,22 @@ func part1(text string) int {
 			}
 			calorieTotal += valueAsNumber
 		}
-		if calorieTotal > mostCalories {
-			mostCalories = calorieTotal
-		}
+		elvesCaloriesNums = append(elvesCaloriesNums, calorieTotal)
 	}
-	return mostCalories
+
+	sort.Sort(sort.Reverse(sort.IntSlice(elvesCaloriesNums)))
+
+	return elvesCaloriesNums
+}
+
+func part1(text string) int {
+	elvesCaloriesNums := caloriesList(text)
+	return elvesCaloriesNums[0]
+}
+
+func part2(text string) []int {
+	elvesCaloriesNums := caloriesList(text)
+	return elvesCaloriesNums[0:3]
 }
 
 func main() {
@@ -37,5 +49,9 @@ func main() {
 	text := string(data)
 
 	part1Result := part1(text)
-	fmt.Println(part1Result)
+	fmt.Println("Part 1, ", part1Result)
+
+	part2Result := part2(text)
+	part2Total := part2Result[0] + part2Result[1] + part2Result[2]
+	fmt.Println("Part 2, ", part2Total)
 }
