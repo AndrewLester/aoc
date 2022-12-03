@@ -1,7 +1,7 @@
-package main
+package one
 
 import (
-	"fmt"
+	"aoc2022/input"
 	"sort"
 	"strconv"
 	"strings"
@@ -28,23 +28,16 @@ func caloriesList(text string) []int {
 	return elvesCaloriesNums
 }
 
-func part1(text string) int {
+func Part1() int {
+	text := input.ReadInput(1)
+
 	elvesCaloriesNums := caloriesList(text)
 	return elvesCaloriesNums[0]
 }
 
-func part2(text string) []int {
+func Part2() int {
+	text := input.ReadInput(1)
+
 	elvesCaloriesNums := caloriesList(text)
-	return elvesCaloriesNums[0:3]
-}
-
-func main() {
-	text := ReadInput(1)
-
-	part1Result := part1(text)
-	fmt.Println("Part 1, ", part1Result)
-
-	part2Result := part2(text)
-	part2Total := part2Result[0] + part2Result[1] + part2Result[2]
-	fmt.Println("Part 2, ", part2Total)
+	return elvesCaloriesNums[0] + elvesCaloriesNums[1] + elvesCaloriesNums[2]
 }
