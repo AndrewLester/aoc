@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	day "aoc2022/5"
+	day "aoc2022/6"
 )
 
 func main() {

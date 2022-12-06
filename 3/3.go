@@ -1,4 +1,4 @@
-package two
+package three
 
 import (
 	"aoc2022/input"
